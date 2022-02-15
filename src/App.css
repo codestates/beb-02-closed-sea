@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.LogoStyle {
+  /* position: absolute; 
+  inset: 0px; 
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 0px; 
+  height: 0px; */
+  padding: 0px;
+  border: none;
+  margin: auto;
+  width: 40px; 
+  height: 40px;
+  /* min-width: 20%;
+  max-width: 20%; 
+  min-height: 20%; 
+  max-height: 20% */
+}
+
+.blank {
+  /* margin-right: 0 10% 0 0; */
+  margin-right: 10%;
+}
+
+.bottomShadow {
+  box-shadow: 0 1px 10px rgb(190, 189, 189);
+}

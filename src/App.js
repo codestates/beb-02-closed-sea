@@ -4,6 +4,9 @@ import Web3 from 'web3';
 import erc721Abi from './erc721Abi';
 import TokenList from "./components/TokenList";
 
+// react-bootstrap
+import ReactBootstrap from "./ReactBootstrap"
+
 function App() {
   const [web3, setWeb3] = useState();
   const [account, setAccount] = useState('');
@@ -50,6 +53,7 @@ function App() {
     console.log("하하3",symbol)
 	  const totalSupply = await tokenContract.methods.totalSupply().call();
     console.log("하하4",totalSupply)
+    const address = newErc721addr
 
     let arr = []
     for (let i=1; i <= totalSupply; i++){
@@ -60,7 +64,7 @@ function App() {
       if (String(tokenOwner).toLowerCase() === account) {
         let tokenURI = await tokenContract.methods.tokenURI(tokenId).call()
         setErc721list((prevState) => {
-          return [...prevState, {name, symbol, tokenId, tokenURI}]
+          return [...prevState, {address, name, symbol, tokenId, tokenURI}]
         })
         
       }
@@ -70,6 +74,10 @@ function App() {
 
   return (
     <div className="App">
+      <ReactBootstrap />
+
+      <div>&nbsp;</div>
+
       <button className="metaConnect" onClick={() => { connectWallet() }}>
         connect to MetaMask
       </button>
@@ -88,8 +96,9 @@ function App() {
         <button onClick={addNewErc721Token}>add new erc721</button>
       </div>
 
-      <TokenList erc721list={erc721list} />
+      <TokenList web3={web3} account={account} erc721list={erc721list} />
 
+      
     </div>
 
   );
